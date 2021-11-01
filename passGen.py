@@ -10,8 +10,6 @@ class passGen:
         self.key = None
         self.salt = os.urandom(32)
         self.store = None
-
-    def new(self):
         print("Enter a new password. The following requirements must be met:\n")
         print("1. At least one number")
         print("2. At least one uppercase AND one lowercase character.")
