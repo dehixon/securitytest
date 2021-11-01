@@ -6,7 +6,6 @@ class passGen:
     # initial construction: password and key are not yet defined, only the salt
 
     def __init__(self):
-        self.password = None
         self.key = None
         self.salt = os.urandom(32)
         self.store = None
@@ -47,3 +46,11 @@ class passGen:
             result = 'Password must contain at least one special character'
             return result
         return result
+
+    def verify(self):
+        passwd = input("Enter your password: ")
+        new_key = hashlib.pbkdf2_hmac('sha256', passwd.encode('utf-8'), self.store[:32], 100000)
+        if new_key == self.store[32:]:
+            return True
+        else:
+            return False
