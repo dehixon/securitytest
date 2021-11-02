@@ -1,14 +1,17 @@
 from passGen import passGen
 
-test = passGen(0, None)
-valid = test.verify()
-while not valid:
-    print('Password was incorrect.')
-    valid = test.verify()
-
-print('Password verified')
-file = open("passwords.txt", "wb")
-file.write(test.store + b'\n')
-file.write(test.store + b'\n')
-file.close()
-print("File written")
+users = {}
+print('Welcome to the password system.')
+print('Enter 1 to login, 2 to create a new user, 3 to change password, 4 to delete a user, or 0 to exit.')
+choice = input('Your choice: ')
+if choice == 1:
+    user = input('Enter your username: ')
+    found = False
+    counter = 0
+    for k in users.keys():
+        if user == k:
+            print('User ' + user + ' found.')
+            found = True
+            break
+        elif counter < len(users):
+            counter + 1
